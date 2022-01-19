@@ -39,6 +39,7 @@ The current setup isn't finished YET, this will be the project structure for now
 ## Packages used
 More packages will be implemented later on, this list needs to be up-to-date
 
+## NPM
 - "@popperjs/core": "^2.10.2",
 - "axios": "^0.21",
 - "bootstrap": "^5.1.3",
@@ -48,3 +49,20 @@ More packages will be implemented later on, this list needs to be up-to-date
 - "resolve-url-loader": "^5.0.0",
 - "sass": "^1.32.11",
 - "sass-loader": "^11.0.1"
+
+## Composer
+- "php": "^7.3|^8.0",
+- "fruitcake/laravel-cors": "^2.0",
+- "guzzlehttp/guzzle": "^7.0.1",
+- "laravel/framework": "^8.75",
+- "laravel/sanctum": "^2.11",
+- "laravel/tinker": "^2.5",
+- "laravel/ui": "^3.4"
+
+DEV
+- "facade/ignition": "^2.5",
+- "fakerphp/faker": "^1.9.1",
+- "laravel/sail": "^1.0.1",
+- "mockery/mockery": "^1.4.4",
+- "nunomaduro/collision": "^5.10",
+- "phpunit/phpunit": "^9.5.10"
