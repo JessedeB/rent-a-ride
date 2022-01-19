@@ -11,6 +11,7 @@ We created this project so people can contribute and learn the Laravel framework
 5. DO NOT comment someone else's feature without discussing this with @JessedeB
 6. DO NOT delete files or code without permission from @JessedeB
 7. DO NOT change the project structure without discussing this with @JessedeB
+8. IF being stuck, or having a question. PLEASE create an issue!
 
 If any of the above rules are broken, you will be kicked out of the team and won't be able to participate in any other project.
 
