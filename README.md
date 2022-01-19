@@ -39,12 +39,12 @@ The current setup isn't finished YET, this will be the project structure for now
 ## Packages used
 More packages will be implemented later on, this list needs to be up-to-date
 
-"@popperjs/core": "^2.10.2",
-"axios": "^0.21",
-"bootstrap": "^5.1.3",
-"laravel-mix": "^6.0.6",
-"lodash": "^4.17.19",
-"postcss": "^8.1.14",
-"resolve-url-loader": "^5.0.0",
-"sass": "^1.32.11",
-"sass-loader": "^11.0.1"
+- "@popperjs/core": "^2.10.2",
+- "axios": "^0.21",
+- "bootstrap": "^5.1.3",
+- "laravel-mix": "^6.0.6",
+- "lodash": "^4.17.19",
+- "postcss": "^8.1.14",
+- "resolve-url-loader": "^5.0.0",
+- "sass": "^1.32.11",
+- "sass-loader": "^11.0.1"
