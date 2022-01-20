@@ -15,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+//The login view
+Route::view('login', 'auth.login')->name('login');
 
+//Assign blade templates without needing a controller
 Route::view('/', 'index')->name('index');
-
 
 //Assign routes ONLY when a user is logged in
 Route::middleware('auth')->group(function() {
