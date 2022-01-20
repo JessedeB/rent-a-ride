@@ -11602,16 +11602,16 @@ h1, h2, h3, h4, h5,
 .slider-text .icon-wrap .heading-title {
   position: relative;
 }
-.slider-text .icon-wrap .heading-title:after {
-  position: absolute;
-  top: 50%;
-  left: -40px;
-  transform: translateY(-50%);
-  content: "";
-  width: 30px;
-  height: 2px;
-  background: #fff;
-}
+/*.slider-text .icon-wrap .heading-title:after {*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  left: -40px;*/
+/*  transform: translateY(-50%);*/
+/*  content: "";*/
+/*  width: 30px;*/
+/*  height: 2px;*/
+/*  background: #fff;*/
+/*}*/
 .slider-text .icon-wrap .heading-title span {
   font-family: "Poppins", Arial, sans-serif;
   color: #fff;
