@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::view('/', 'index')->name('index');
+
+
+//Assign routes ONLY when a user is logged in
 Route::middleware('auth')->group(function() {
-    Route::get('home', [\App\Http\Controllers\DashboardController::class, 'home'])->name('home');
+    Route::view('home', 'home');
 });
