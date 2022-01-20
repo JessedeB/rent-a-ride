@@ -3,6 +3,12 @@
 Welcome to rent-a-ride, a website including a administration dashboard using the Laravel framework.
 We created this project so people can contribute and learn the Laravel framework, from beginners to more advanced users.
 
+# Projects tab
+Within the projects tab above, a simple kanban board is shown. Within this board, you'll see the current state of the project.
+ONLY pick new items when your current one has been completed and approved by @JessedeB.
+ONLY add new items to the list in coordination with @JessedeB
+IF an item is already open for a while, contact the group ( or @JessedeB ) if you can pick up the item.
+
 ## Rules
 1. DO NOT push directly into the main branch, for each feature create a branch and do a pull request with @JessedeB as reviewer
 2. Don't start of a new feature instantly, discuss this with @JessedeB
