@@ -33,16 +33,15 @@ The current setup isn't finished YET, this will be the project structure for now
     - Models
     - Providers
     - Services
-
 - Resources
     - views
     - auth
     - components
-        - wrapper.blade.php
     - layouts
         - partials
-            - navbar.blade.php
-
+        - site ( main website views )
+        - dashboard ( user and admin dashboard )
+        
 ## How do i start with a feature?
 1. Create an simple overview, think about the feature widely.
 2. Create a database diagram ( tablename, columns, primary / foreign keys, unique, constraints etc. ) and show this to @JessedeB
