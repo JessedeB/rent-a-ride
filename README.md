@@ -43,6 +43,13 @@ The current setup isn't finished YET, this will be the project structure for now
         - partials
             - navbar.blade.php
 
+## How do i start with a feature?
+1. Create an simple overview, think about the feature widely.
+2. Create a database diagram ( tablename, columns, primary / foreign keys, unique, constraints etc. ) and show this to @JessedeB
+3. Create a class diagram, what controllers / models / services etc. do you think the feature needs, discuss this with @JessedeB
+4. Implement the feature
+5. Create a pull request, and assign @JessedeB as reviewer
+
 ## Packages used
 More packages will be implemented later on, this list needs to be up-to-date
 
