@@ -41,8 +41,7 @@
                         <a href="{{ route('home') }}" class="dropdown-item"> Dashboard </a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
