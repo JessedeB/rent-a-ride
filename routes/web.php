@@ -18,5 +18,14 @@ Route::view('contact', 'site.contact')->name('contact');
 
 //Assign routes ONLY when a user is logged in
 Route::middleware('auth')->group(function() {
-    Route::view('home', 'dashboard.home');
+    Route::view('home', 'dashboard.home')->name('home');
+
+    //Example pages
+    Route::view('cards', 'dashboard.examples.cards')->name('cards');
+    Route::view('buttons', 'dashboard.examples.buttons')->name('buttons');
+    Route::view('forms', 'dashboard.examples.forms')->name('forms');
+    Route::view('icons', 'dashboard.examples.icons')->name('icons');
+    Route::view('profile', 'dashboard.examples.profile')->name('profile');
+    Route::view('tables', 'dashboard.examples.tables')->name('tables');
 });
+
