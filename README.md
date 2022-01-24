@@ -71,7 +71,8 @@ More packages will be implemented later on, this list needs to be up-to-date
 - "laravel/framework": "^8.75",
 - "laravel/sanctum": "^2.11",
 - "laravel/tinker": "^2.5",
-- "laravel/ui": "^3.4"
+- "laravel/ui": "^3.4",
+- "spatie/laravel-permission": "^5.5"
 
 DEV
 - "facade/ignition": "^2.5",
