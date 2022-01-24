@@ -27,5 +27,8 @@ Route::middleware('auth')->group(function() {
     Route::view('icons', 'dashboard.examples.icons')->name('icons');
     Route::view('profile', 'dashboard.examples.profile')->name('profile');
     Route::view('tables', 'dashboard.examples.tables')->name('tables');
+
+    //Roles & permissions
+   Route::resource('roles', App\Http\Controllers\RoleController::class);
 });
 

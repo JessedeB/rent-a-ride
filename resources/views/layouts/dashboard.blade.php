@@ -79,6 +79,18 @@
                     </a>
                 </li>
 
+                @role('admin')
+                    <li class="sidebar-header">
+                        Administration tools
+                    </li>
+
+                    <li class="sidebar-item {{ request()->is('roles') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('roles.index') }}">
+                            <i class="align-middle" data-feather="slash"></i> <span class="align-middle">Roles</span>
+                        </a>
+                    </li>
+                @endrole
+
             </ul>
         </div>
     </nav>
