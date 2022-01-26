@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function() {
 
     //Roles & permissions
    Route::resource('roles', App\Http\Controllers\RoleController::class);
+   Route::post('roles/{role}/{user_id}', [\App\Http\Controllers\RoleController::class, 'unassignRole'])->name('role.unassign');
 });
 

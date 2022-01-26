@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -49,7 +50,8 @@ class RoleController extends Controller
      */
     public function store(storeRoleRequest $request)
     {
-        Role::create($request->validated());
+        $role = Role::create($request->validated());
+//        dd($role);
 
         return redirect('/roles')->with('success', 'Role is created');
     }
@@ -58,11 +60,13 @@ class RoleController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $role)
     {
-        // TODO: show all users with this role
+        $users = User::role($role)->paginate(20);
+
+        return view('dashboard.admin.roles.show', compact('users'));
     }
 
     /**
@@ -103,5 +107,16 @@ class RoleController extends Controller
         Role::findOrFail($id)->delete();
 
         return back()->with('success', 'Role is deleted');
+    }
+
+    /**
+     * @param string $role
+     * @return RedirectResponse
+     */
+    public function unassignRole(string $role, $id)
+    {
+        User::findOrFail($id)->removeRole($role);
+
+        return redirect('/roles')->with('success', 'Removed role for the user');
     }
 }
