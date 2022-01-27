@@ -15,6 +15,7 @@ class CreateYearModelsTable extends Migration
         Schema::create('year_models',function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
+            $table->foreignId('rental_class_id')->constrained();
             $table->integer('year',false, true);
             $table->string('model',100);
             $table->timestamps();
