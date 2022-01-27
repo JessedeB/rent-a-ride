@@ -11,7 +11,8 @@ class CreateManufactureresTable extends Migration
      *
      * @return void
      */
-    public function up(){
+    public function up()
+    {
         Schema::create('manufacturers',function (Blueprint $table) {
            $table->id();
            $table->string('make',100);

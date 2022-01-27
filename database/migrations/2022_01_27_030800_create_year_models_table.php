@@ -11,7 +11,8 @@ class CreateYearModelsTable extends Migration
      *
      * @return void
      */
-    public function up(){
+    public function up()
+    {
         Schema::create('year_models',function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
