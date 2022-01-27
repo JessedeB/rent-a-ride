@@ -16,7 +16,7 @@ class CreateExteriorColorsTable extends Migration
         Schema::create('exterior_colors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
-            $table->string('color_name',100);
+            $table->string('name',100);
             $table->string('hex_code',6);
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ class CreateInteriorColorsTable extends Migration
         Schema::create('interior_colors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
-            $table->string('interior_colors',100);
-            $table->string('hex_color',6);
+            $table->string('name',100);
+            $table->string('hex_code',6);
             $table->timestamps();
         });
     }
