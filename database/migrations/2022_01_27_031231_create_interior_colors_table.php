@@ -18,6 +18,7 @@ class CreateInteriorColorsTable extends Migration
             $table->foreignId('manufacturer_id')->constrained();
             $table->string('name',100);
             $table->string('hex_code',6);
+            $table->unique(['manufacturer_id','name']);
             $table->timestamps();
         });
     }

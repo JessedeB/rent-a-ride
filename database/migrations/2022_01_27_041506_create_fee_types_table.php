@@ -15,7 +15,7 @@ class CreateFeeTypesTable extends Migration
     {
         Schema::create('fee_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
+            $table->string('name',100)->unique();
             $table->multiLineString('description');
             $table->enum('type',['Debit','Credit']);
             $table->timestamps();

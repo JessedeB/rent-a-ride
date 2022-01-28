@@ -19,6 +19,7 @@ class CreateYearModelsTable extends Migration
             $table->foreignId('rental_class_id')->constrained();
             $table->integer('year',false, true);
             $table->string('model',100);
+            $table->unique(['manufacturer_id','model','year']);
             $table->timestamps();
         });
     }

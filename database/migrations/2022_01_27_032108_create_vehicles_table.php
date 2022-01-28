@@ -16,7 +16,7 @@ class CreateVehiclesTable extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('year_model_id')->constrained();
-            $table->string('vin',17);
+            $table->string('vin',17)->unique();
             $table->float('mileage',7,1);
             $table->foreignId('exterior_color_id')->constrained();
             $table->foreignId('interior_color_id')->constrained();
