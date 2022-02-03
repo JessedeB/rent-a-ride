@@ -3,6 +3,17 @@
 Welcome to rent-a-ride, a website including a administration dashboard using the Laravel framework.
 We created this project so people can contribute and learn the Laravel framework, from beginners to more advanced users.
 
+# Getting a dev environment running with sail
+You will need composer and docker installed and setup before starting
+
+1. Clone the repo into a new folder
+2. copy and paste '.env.example' to '.env'; 
+   1. make any necessary changes see https://laravel.com/docs/8.x/sail#debugging-with-xdebug if you are running linux
+3. run 'composer install'
+4. run './vendor/bin/sail up' in windows this has to be run from wsl
+5. run 'php artisan key:generate'
+6. run 'php artisan migrate --seed'
+
 # Projects tab
 Within the projects tab above, a simple kanban board is shown. Within this board, you'll see the current state of the project.
 ONLY pick new items when your current one has been completed and approved by @JessedeB.
@@ -71,7 +82,8 @@ More packages will be implemented later on, this list needs to be up-to-date
 - "laravel/framework": "^8.75",
 - "laravel/sanctum": "^2.11",
 - "laravel/tinker": "^2.5",
-- "laravel/ui": "^3.4"
+- "laravel/ui": "^3.4",
+- "spatie/laravel-permission": "^5.5"
 
 DEV
 - "facade/ignition": "^2.5",
