@@ -16,6 +16,7 @@
 
     <title>{{ config('app.name') }} :: {{ request()->segment(1) ?: 'home' }}</title>
 
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -78,6 +79,24 @@
                         <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
                     </a>
                 </li>
+
+                @role('admin')
+                    <li class="sidebar-header">
+                        Administration tools
+                    </li>
+
+                    <li class="sidebar-item {{ request()->is('roles') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('roles.index') }}">
+                            <i class="align-middle" data-feather="slash"></i> <span class="align-middle">Roles</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item {{ request()->is('permissions') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('permissions.index') }}">
+                            <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Permissions</span>
+                        </a>
+                    </li>
+                @endrole
 
             </ul>
         </div>
