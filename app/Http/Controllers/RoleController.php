@@ -91,7 +91,7 @@ class RoleController extends Controller
      */
     public function update(storeRoleRequest $request, $id)
     {
-        Role::findOrFail($id)->update($request->validated);
+        Role::findOrFail($id)->update($request->validated());
 
         return redirect('/roles')->with('success', 'Role is updated');
     }

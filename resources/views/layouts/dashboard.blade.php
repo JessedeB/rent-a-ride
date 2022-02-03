@@ -90,6 +90,12 @@
                             <i class="align-middle" data-feather="slash"></i> <span class="align-middle">Roles</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ request()->is('permissions') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('permissions.index') }}">
+                            <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Permissions</span>
+                        </a>
+                    </li>
                 @endrole
 
             </ul>

@@ -28,8 +28,13 @@ Route::middleware('auth')->group(function() {
     Route::view('profile', 'dashboard.examples.profile')->name('profile');
     Route::view('tables', 'dashboard.examples.tables')->name('tables');
 
+});
+
+Route::middleware('role:admin')->group(function () {
     //Roles & permissions
-   Route::resource('roles', App\Http\Controllers\RoleController::class);
-   Route::post('roles/{role}/{user_id}', [\App\Http\Controllers\RoleController::class, 'unassignRole'])->name('role.unassign');
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
+    Route::post('roles/{role}/{user_id}', [\App\Http\Controllers\RoleController::class, 'unassignRole'])->name('role.unassign');
+
+    Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 });
 
