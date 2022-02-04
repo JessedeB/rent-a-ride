@@ -10,11 +10,17 @@ class Payment extends Model
 {
     use HasFactory;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function user(): HasOne
     {
         return $this->hasOne(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function rental(): HasOne
     {
         return $this->hasOne(Rental::class);

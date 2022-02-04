@@ -11,11 +11,17 @@ class DrivetrainOption extends Model
 {
     use HasFactory;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function yearModel(): HasOne
     {
         return $this->hasOne(YearModel::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function vehicles(): BelongsToMany
     {
         return $this->belongsToMany(Vehicle::class);

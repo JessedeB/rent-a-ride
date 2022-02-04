@@ -10,6 +10,9 @@ class FeeType extends Model
 {
     use HasFactory;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function rentalFees(): BelongsToMany
     {
         return $this->belongsToMany(RentalFee::class);
