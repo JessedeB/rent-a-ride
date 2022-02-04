@@ -12,22 +12,22 @@ class InteriorColor extends Model
 {
     use HasFactory;
 
-    public function manufacturer() : HasOne
+    public function manufacturer(): HasOne
     {
         return $this->hasOne(Manufacturer::class);
     }
 
-    public function yearModels() : HasManyThrough
+    public function yearModels(): HasManyThrough
     {
         return $this->hasManyThrough(YearModel::class,YearModelInteriorColor::class);
     }
 
-    public function yearModeInteriorColors() : BelongsToMany
+    public function yearModeInteriorColors(): BelongsToMany
     {
         return $this->belongsToMany(YearModelInteriorColor::class);
     }
 
-    public function vehicles() : BelongsToMany
+    public function vehicles(): BelongsToMany
     {
         return $this->belongsToMany(Vehicle::class);
     }

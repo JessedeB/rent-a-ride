@@ -11,12 +11,12 @@ class DrivetrainOption extends Model
 {
     use HasFactory;
 
-    public function yearModel() : HasOne
+    public function yearModel(): HasOne
     {
         return $this->hasOne(YearModel::class);
     }
 
-    public function vehicles() : BelongsToMany
+    public function vehicles(): BelongsToMany
     {
         return $this->belongsToMany(Vehicle::class);
     }

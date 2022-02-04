@@ -10,7 +10,7 @@ class FeeType extends Model
 {
     use HasFactory;
 
-    public function rentalFees() : BelongsToMany
+    public function rentalFees(): BelongsToMany
     {
         return $this->belongsToMany(RentalFee::class);
     }

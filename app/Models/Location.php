@@ -10,12 +10,12 @@ class Location extends Model
 {
     use HasFactory;
 
-    public function rentalPickups() : BelongsToMany
+    public function rentalPickups(): BelongsToMany
     {
         return $this->belongsToMany(Rental::class,'rentals','pickup_location','id');
     }
 
-    public function rentalReturns() : BelongsToMany
+    public function rentalReturns(): BelongsToMany
     {
         return $this->belongsToMany(Rental::class,'rentals','return_location','id');
     }

@@ -10,17 +10,17 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
-    public function yearModels() : BelongsToMany
+    public function yearModels(): BelongsToMany
     {
         return $this->belongsToMany(YearModel::class);
     }
 
-    public function exteriorColors() : BelongsToMany
+    public function exteriorColors(): BelongsToMany
     {
         return $this->belongsToMany(ExteriorColor::class);
     }
 
-    public function interiorColors() : BelongsToMany
+    public function interiorColors(): BelongsToMany
     {
         return $this->belongsToMany(InteriorColor::class);
     }
