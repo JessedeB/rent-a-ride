@@ -16,7 +16,7 @@ class CreateRentalClassesTable extends Migration
         Schema::create('rental_classes', function (Blueprint $table) {
             $table->id();
             $table->string('name',100);
-            $table->multiLineString('description');
+            $table->string('description',500);
             $table->double('daily_rate',11,2,true);
             $table->double('weekly_rate',11,2,true);
             $table->double('monthly_rate',11,2,true);

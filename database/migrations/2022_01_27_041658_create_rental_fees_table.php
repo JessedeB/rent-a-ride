@@ -18,7 +18,7 @@ class CreateRentalFeesTable extends Migration
             $table->foreignId('rental_id')->constrained();
             $table->foreignId('fee_type_id')->constrained();
             $table->double('amount',11,2,true);
-            $table->multiLineString('note');
+            $table->string('note');
             $table->timestamps();
         });
     }

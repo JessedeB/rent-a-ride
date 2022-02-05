@@ -17,7 +17,7 @@ class CreateDriveTrainOptionsTable extends Migration
             $table->id();
             $table->foreignId('year_model_id')->constrained();
             $table->enum('drivetrain',['FWD','RWD','AWD','4WD']);
-            $table->unique('year_model_id','drivetrain');
+            $table->unique(['year_model_id','drivetrain']);
             $table->timestamps();
         });
     }
