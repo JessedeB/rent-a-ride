@@ -4,25 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RentalFee extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function rental(): HasOne
+    public function rental(): BelongsTo
     {
-        return $this->hasOne(Rental::class);
+        return $this->belongsTo(Rental::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function feeType(): HasOne
+    public function feeType(): BelongsTo
     {
-        return $this->hasOne(FeeType::class);
+        return $this->belongsTo(FeeType::class);
     }
 }

@@ -4,43 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class InteriorColor extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function manufacturer(): HasOne
+    public function manufacturer(): BelongsTo
     {
-        return $this->hasOne(Manufacturer::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function yearModels(): HasManyThrough
-    {
-        return $this->hasManyThrough(YearModel::class,YearModelInteriorColor::class);
+        return $this->belongsTo(Manufacturer::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function yearModeInteriorColors(): BelongsToMany
+    public function yearModels(): BelongsToMany
     {
-        return $this->belongsToMany(YearModelInteriorColor::class);
+        return $this->belongsToMany(YearModel::class, 'year_model_interior_colors');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vehicles(): BelongsToMany
+    public function vehicles(): HasMany
     {
-        return $this->belongsToMany(Vehicle::class);
+        return $this->hasMany(Vehicle::class);
     }
 }

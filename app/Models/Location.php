@@ -4,33 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Location extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function rentalPickups(): BelongsToMany
+    public function rentalPickups(): HasMany
     {
-        return $this->belongsToMany(Rental::class,'rentals','pickup_location','id');
+        return $this->HasMany(Rental::class, 'pickup_location', 'id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function rentalReturns(): BelongsToMany
+    public function rentalReturns(): HasMany
     {
-        return $this->belongsToMany(Rental::class,'rentals','return_location','id');
+        return $this->hasMany(Rental::class, 'return_location', 'id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vehicles(): BelongsToMany
+    public function vehicles(): HasMany
     {
-        return $this->belongsToMany(Vehicle::class);
+        return $this->hasMany(Vehicle::class);
     }
 }

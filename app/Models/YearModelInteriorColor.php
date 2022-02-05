@@ -4,25 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class YearModelInteriorColor extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function yearModel(): HasOne
+    public function yearModel(): BelongsTo
     {
-        return $this->hasOne(YearModel::class);
+        return $this->belongsTo(YearModel::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function interiorColor(): HasOne
+    public function interiorColor(): BelongsTo
     {
-        return $this->hasOne(InteriorColor::class);
+        return $this->belongsTo(InteriorColor::class);
     }
 }

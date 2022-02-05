@@ -4,77 +4,58 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vehicle extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return
      */
-    public function yearModel(): HasOne
+    public function yearModel(): BelongsTo
     {
-        return $this->hasOne('YearModel');
+        return $this->belongsTo('YearModel');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function manufacturer(): HasOneThrough
+    public function drivetrainOption(): BelongsTo
     {
-        return $this->hasOneThrough(Manufacturer::class,YearModel::class);
+        return $this->belongsTo(DrivetrainOption::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function rentalClass(): HasOneThrough
+    public function exteriorColor(): BelongsTo
     {
-        return $this->hasOneThrough(RentalClass::class,YearModel::class);
+        return $this->belongsTo(ExteriorColor::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function drivetrainOption(): HasOne
+    public function interiorColor(): BelongsTo
     {
-        return $this->hasOne(DrivetrainOption::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function exteriorColor(): HasOne
-    {
-        return $this->hasOne(ExteriorColor::class);
+        return $this->belongsTo(InteriorColor::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function interiorColor(): HasOne
+    public function location(): BelongsTo
     {
-        return $this->hasOne(InteriorColor::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function location(): HasOne
-    {
-        return $this->hasOne(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function rentals(): BelongsToMany
+    public function rentals(): HasMany
     {
-        return $this->belongsToMany(Rental::class);
+        return $this->hasMany(Rental::class);
     }
-
-
 }

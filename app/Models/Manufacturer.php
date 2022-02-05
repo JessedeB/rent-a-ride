@@ -4,35 +4,34 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Manufacturer extends Model
 {
     use HasFactory;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function yearModels(): BelongsToMany
+    public function yearModels(): HasMany
     {
-        return $this->belongsToMany(YearModel::class);
+        return $this->hasMany(YearModel::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function exteriorColors(): BelongsToMany
+    public function exteriorColors(): HasMany
     {
-        return $this->belongsToMany(ExteriorColor::class);
+        return $this->hasMany(ExteriorColor::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function interiorColors(): BelongsToMany
+    public function interiorColors(): HasMany
     {
-        return $this->belongsToMany(InteriorColor::class);
+        return $this->hasMany(InteriorColor::class);
     }
-
-
 }
