@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class RentalClass extends Model
 {
     use HasFactory;
-
+    protected $fillable=['name','description','daily_rate','weekly_rate','monthly_rate'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
