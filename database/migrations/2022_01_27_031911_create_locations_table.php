@@ -21,7 +21,7 @@ class CreateLocationsTable extends Migration
             $table->string('state', 2);
             $table->string('postal_code', 10);
             $table->string('country', 2);
-            $table->string('phone', 15)->unique();
+            $table->string('phone', 17)->unique();
             $table->time('open_time');
             $table->time('close_time');
             $table->unique(['street', 'city', 'state']);
