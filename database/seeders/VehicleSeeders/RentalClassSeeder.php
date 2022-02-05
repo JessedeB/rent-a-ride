@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\VehicleSeeders;
 
 use Illuminate\Database\Seeder;
 
-class YearModelSeeder extends Seeder
+class RentalClassSeeder extends Seeder
 {
     /**
      * Run the database seeds.
