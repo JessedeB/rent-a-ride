@@ -17,7 +17,7 @@ class CreateRentalFeesTable extends Migration
             $table->id();
             $table->foreignId('rental_id')->constrained();
             $table->foreignId('fee_type_id')->constrained();
-            $table->double('amount',11,2,true);
+            $table->double('amount', 11, 2, true);
             $table->string('note');
             $table->timestamps();
         });
@@ -30,6 +30,8 @@ class CreateRentalFeesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('rental_fees');
+        Schema::enableForeignKeyConstraints();
     }
 }

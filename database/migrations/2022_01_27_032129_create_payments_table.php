@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('rental_id')->constrained();
-            $table->double('amount',11,2,true);
+            $table->double('amount', 11, 2, true);
             $table->timestamps();
         });
     }
@@ -29,6 +29,8 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('payments');
+        Schema::enableForeignKeyConstraints();
     }
 }

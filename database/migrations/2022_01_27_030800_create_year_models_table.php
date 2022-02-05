@@ -13,13 +13,13 @@ class CreateYearModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('year_models',function (Blueprint $table) {
+        Schema::create('year_models', function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
             $table->foreignId('rental_class_id')->constrained();
-            $table->integer('year',false, true);
-            $table->string('model',100);
-            $table->unique(['manufacturer_id','model','year']);
+            $table->integer('year', false, true);
+            $table->string('model', 100);
+            $table->unique(['manufacturer_id', 'model', 'year']);
             $table->timestamps();
         });
     }
@@ -29,7 +29,10 @@ class CreateYearModelsTable extends Migration
      *
      * @return void
      */
-    public function down(){
+    public function down()
+    {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('year_models');
+        Schema::enableForeignKeyConstraints();
     }
 }

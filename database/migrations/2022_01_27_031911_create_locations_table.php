@@ -15,16 +15,16 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100)->unique();
+            $table->string('name', 100)->unique();
             $table->string('street', 250);
             $table->string('city', 100);
-            $table->string('state',2);
-            $table->string('postal_code',10);
-            $table->string('country',2);
-            $table->string('phone',15)->unique();
+            $table->string('state', 2);
+            $table->string('postal_code', 10);
+            $table->string('country', 2);
+            $table->string('phone', 15)->unique();
             $table->time('open_time');
             $table->time('close_time');
-            $table->unique(['street','city','state']);
+            $table->unique(['street', 'city', 'state']);
             $table->timestamps();
         });
     }
@@ -36,6 +36,8 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('locations');
+        Schema::enableForeignKeyConstraints();
     }
 }
