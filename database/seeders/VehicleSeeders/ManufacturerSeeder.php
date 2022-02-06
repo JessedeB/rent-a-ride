@@ -14,26 +14,6 @@ use App\Models\YearModelInteriorColor;
 trait ManufacturerSeeder {
 
     private int $manufacturerID;
-    /***
-     * @var string $make
-     */
-    protected string $make;
-    /**
-     * @var String[][]
-     */
-    protected array $models;
-    /**
-     * @var String[][]
-     */
-    protected array $exteriorColors;
-    /**
-     * @var String[][]
-     */
-    protected array $interiorColors;
-    /**
-     * @var String[][][]
-     */
-    protected array $modelOptions;
 
     public final function run()
     {
