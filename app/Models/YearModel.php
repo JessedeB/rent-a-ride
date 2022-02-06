@@ -12,6 +12,8 @@ class YearModel extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['year', 'model'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
