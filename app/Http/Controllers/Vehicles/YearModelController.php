@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Vehicles;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class InteriorColorController extends Controller
+class YearModelController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Vehicles;
+use App\Http\Controllers\Controller;
 
+use App\Models\Manufacturer;
+use App\Models\YearModel;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ManufacturerController extends Controller
 {
@@ -11,9 +15,12 @@ class ManufacturerController extends Controller
      *
      * @return Factory|Application|View
      */
-    public function index()
+    public function index() : View
     {
 
+        $manufacturers = Manufacturer::paginate(20);
+
+        return view('dashboard.car_list.manufacturers.index', compact('manufacturers'));
     }
 
     /**
@@ -43,9 +50,11 @@ class ManufacturerController extends Controller
      * @param  int  $id
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
-    public function show(string $permission)
+    public function show(int $id)
     {
-
+        $models = YearModel::with('rentalClass','manufacturer')->where('manufacturer_id',$id)
+            ->paginate(20);
+        return view('dashboard.car_list.manufacturers.show',compact('models'));
     }
 
 

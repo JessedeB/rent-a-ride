@@ -38,10 +38,10 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 
     //Vehicles
-    Route::resource('manufacturers', App\Http\Controllers\ManufacturerController::class);
-    Route::resource('models', App\Http\Controllers\YearModelController::class);
-    Route::resource('exterior-colors',App\Http\Controllers\ExteriorColorController::class);
-    Route::resource('interior-colors',App\Http\Controllers\InteriorColorController::class);
-    Route::resource('rental-classes',App\Http\Controllers\RentalClassController::class);
+    Route::resource('manufacturers', App\Http\Controllers\Vehicles\ManufacturerController::class);
+    Route::resource('models', App\Http\Controllers\Vehicles\YearModelController::class);
+    Route::resource('exterior-colors',App\Http\Controllers\Vehicles\ExteriorColorController::class);
+    Route::resource('interior-colors',App\Http\Controllers\Vehicles\InteriorColorController::class);
+    Route::resource('rental-classes',App\Http\Controllers\Vehicles\RentalClassController::class);
 });
 
