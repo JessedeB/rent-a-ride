@@ -9,7 +9,7 @@
     <div class="table-responsive">
         <table class="table">
             <tr>
-                <th>Name</th>
+                <th>Make</th>
                 <th>Options</th>
             </tr>
             @forelse($manufacturers as $manufacturer)
