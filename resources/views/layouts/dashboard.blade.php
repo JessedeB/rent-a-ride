@@ -99,20 +99,30 @@
                 @endrole
 
                 @role('admin')
-                    <li class="sidebar-header">Vehicles</li>
+                    <li class="sidebar-header">
+                        Vehicles
+                    </li>
                     <li class="sidebar-item {{ request()->is('manufacturers')? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('manufacturers.index') }}">
                             <span class="align-middle">Manufacturers</span>
                         </a>
+                    </li>
+                    <li class="sidebar-item {{ request()->is('models')? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('models.index') }}">
                             <span class="align-middle">Models</span>
                         </a>
+                    </li>
+                    <li class="sidebar-item {{ request()->is('exterior-colors')? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('exterior-colors.index') }}">
                             <span class="align-middle">Exterior Colors</span>
                         </a>
+                    </li>
+                    <li class="sidebar-item {{ request()->is('interior-colors')? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('interior-colors.index') }}">
                             <span class="align-middle">Interior Colors</span>
                         </a>
+                    </li>
+                    <li class="sidebar-item {{ request()->is('rental-classes')? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('rental-classes.index') }}">
                             <span class="align-middle">Rental Classes</span>
                         </a>
