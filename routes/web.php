@@ -36,5 +36,12 @@ Route::middleware('role:admin')->group(function () {
     Route::post('roles/{role}/{user_id}', [\App\Http\Controllers\RoleController::class, 'unassignRole'])->name('role.unassign');
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+
+    //Vehicles
+    Route::resource('manufacturers', App\Http\Controllers\ManufacturerController::class);
+    Route::resource('models', App\Http\Controllers\YearModelController::class);
+    Route::resource('exterior-colors',App\Http\Controllers\ExteriorColorController::class);
+    Route::resource('interior-colors',App\Http\Controllers\InteriorColorController::class);
+    Route::resource('rental-classes',App\Http\Controllers\RentalClassController::class);
 });
 

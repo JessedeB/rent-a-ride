@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InteriorColorController extends Controller
+class ExteriorColorController extends Controller
 {
     /**
      * Display a listing of the resource.

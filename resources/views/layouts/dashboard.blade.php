@@ -98,6 +98,27 @@
                     </li>
                 @endrole
 
+                @role('admin')
+                    <li class="sidebar-header">Vehicles</li>
+                    <li class="sidebar-item {{ request()->is('manufacturers')? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('manufacturers.index') }}">
+                            <span class="align-middle">Manufacturers</span>
+                        </a>
+                        <a class="sidebar-link" href="{{ route('models.index') }}">
+                            <span class="align-middle">Models</span>
+                        </a>
+                        <a class="sidebar-link" href="{{ route('exterior-colors.index') }}">
+                            <span class="align-middle">Exterior Colors</span>
+                        </a>
+                        <a class="sidebar-link" href="{{ route('interior-colors.index') }}">
+                            <span class="align-middle">Interior Colors</span>
+                        </a>
+                        <a class="sidebar-link" href="{{ route('rental-classes.index') }}">
+                            <span class="align-middle">Rental Classes</span>
+                        </a>
+                    </li>
+                @endrole
+
             </ul>
         </div>
     </nav>
