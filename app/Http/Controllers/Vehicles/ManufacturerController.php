@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Vehicles;
 use App\Http\Controllers\Controller;
 
+use App\Models\ExteriorColor;
+use App\Models\InteriorColor;
 use App\Models\Manufacturer;
 use App\Models\YearModel;
 use Illuminate\Http\Request;
@@ -53,8 +55,10 @@ class ManufacturerController extends Controller
     public function show(int $id)
     {
         $models = YearModel::with('rentalClass','manufacturer')->where('manufacturer_id',$id)
-            ->paginate(20);
-        return view('dashboard.car_list.manufacturers.show',compact('models'));
+            ->paginate(5,pageName: 'model-pager');
+        $exteriorColors = ExteriorColor::query()->where('manufacturer_id',$id)->paginate(5,pageName: 'ext-color-pager');
+        $interiorColors = InteriorColor::query()->where('manufacturer_id',$id)->paginate(5,pageName: 'int-color-pager');
+        return view('dashboard.car_list.manufacturers.show',compact('models','interiorColors','exteriorColors'));
     }
 
 
