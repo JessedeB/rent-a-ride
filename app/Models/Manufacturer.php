@@ -11,7 +11,7 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['make'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
