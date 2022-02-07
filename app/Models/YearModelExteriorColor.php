@@ -10,6 +10,8 @@ class YearModelExteriorColor extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['year_model_id', 'exterior_color_id'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

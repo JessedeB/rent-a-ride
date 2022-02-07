@@ -12,6 +12,8 @@ class ExteriorColor extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['manufacturer_id', 'name', 'hex_code'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

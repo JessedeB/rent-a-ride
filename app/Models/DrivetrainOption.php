@@ -11,6 +11,8 @@ class DrivetrainOption extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['year_model_id', 'drivetrain'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
