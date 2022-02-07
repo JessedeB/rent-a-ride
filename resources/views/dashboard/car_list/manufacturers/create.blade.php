@@ -5,26 +5,18 @@
 @include('layouts.partials.message')
 
 <x-card>
-    <form action="{{ route('permissions.store') }}" method="POST">
+    <form action="{{ route('manufacturers.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Permission name">
+            <label for="make">Make</label>
+            <input type="text" name="make" id="make" class="form-control" placeholder="Make">
 
-            @error('name')
+            @error('make')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="guard_name">Guard name</label>
-            <input type="text" name="guard_name" id="guard_name" class="form-control" placeholder="Guard name">
-
-            @error('guard')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
-        </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

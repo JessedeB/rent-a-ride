@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Vehicles;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\storeManufacturerRequest;
 use App\Models\ExteriorColor;
 use App\Models\InteriorColor;
 use App\Models\Manufacturer;
 use App\Models\YearModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,18 +34,19 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-
+        return view('dashboard.car_list.manufacturers.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param PermissionsRequest $request
+     * @param storeManufacturerRequest $request
      * @return RedirectResponse
      */
-    public function store(PermissionsRequest $request)
+    public function store(storeManufacturerRequest $request)
     {
-
+        Manufacturer::create($request->validated());
+        return redirect('/manufacturer')->with('success', 'Manufacturer is created');
     }
 
     /**
@@ -70,7 +73,8 @@ class ManufacturerController extends Controller
      */
     public function edit($id)
     {
-
+        $manufacturer = Manufacturer::query()->findOrFail($id);
+        return \view('dashboard.car_list.manufacturers.edit',compact('manufacturer'));
     }
 
     /**
@@ -80,9 +84,11 @@ class ManufacturerController extends Controller
      * @param  int  $id
      * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(PermissionsRequest $request, $id)
+    public function update(storeManufacturerRequest $request, $id)
     {
+        Manufacturer::findOrFail($id)->update($request->validated());
 
+        return redirect('/manufacturers')->with('success','Manufacturer Updated');
     }
 
     /**
