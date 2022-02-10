@@ -80,7 +80,7 @@ class ManufacturerController extends Controller
      */
     public function edit($id)
     {
-        $manufacturer = Manufacturer::query()->findOrFail($id);
+        $manufacturer = Manufacturer::findOrFail($id);
         return \view('dashboard.car_list.manufacturers.edit', compact('manufacturer'));
     }
 
