@@ -5,7 +5,7 @@
 @include('layouts.partials.message')
 
 <x-card>
-    <a href="{{ route('permissions.create') }}" class="btn btn-primary mb-3">New permission</a>
+    <a href="{{ route('models.create') }}" class="btn btn-primary mb-3">New Model</a>
     <div class="table-responsive">
         <table class="table">
             <tr>
