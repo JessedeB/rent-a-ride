@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Vehicles;
 
+use App\Http\Requests\YearModelRequest;
 use App\Models\Manufacturer;
 use App\Models\RentalClass;
 use App\Models\YearModel;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class YearModelController extends Controller
 {
@@ -15,7 +19,7 @@ class YearModelController extends Controller
      *
      * @return Factory|Application|View
      */
-    public function index()
+    public function index(): View
     {
         $yearModels = YearModel::with('manufacturer' ,'rentalClass')->paginate(20);
 
@@ -27,7 +31,7 @@ class YearModelController extends Controller
      *
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         $manufacturers = Manufacturer::all();
         $rentalClasses = RentalClass::all();
@@ -38,12 +42,13 @@ class YearModelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param PermissionsRequest $request
+     * @param YearModelRequest $request
      * @return RedirectResponse
      */
-    public function store(PermissionsRequest $request)
+    public function store(YearModelRequest $request): RedirectResponse
     {
-
+        YearModel::create($request->validated());
+        return redirect('/manufacturers')->with('success', 'Model Created');
     }
 
     /**
@@ -52,9 +57,11 @@ class YearModelController extends Controller
      * @param  int  $id
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
-    public function show(string $permission)
+    public function show(int $id): View
     {
+        $model = YearModel::with('manufacturer','exteriorColors','interiorColors','rentalClass','drivetrainOptions')->findOrFail($id);
 
+        return view('dashboard.car_list.models.show', compact('model'));
     }
 
 
@@ -76,7 +83,7 @@ class YearModelController extends Controller
      * @param  int  $id
      * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(PermissionsRequest $request, $id)
+    public function update(YearModelRequest $request, $id)
     {
 
     }

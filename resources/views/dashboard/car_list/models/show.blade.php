@@ -3,37 +3,48 @@
 @section('content')
 
 <x-card>
-    <a href="#" class="btn btn-primary mb-3">Assign users</a>
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Options</th>
-            </tr>
-
-            @forelse($users as $user)
+    <span class="fs-2 fw-bold">{{$model->year}} {{$model->manufacturer->make}} {{$model->model}}</span><br/>
+    <span>Rental Class: {{$model->rentalClass->name}}</span><br/>
+    <span>Drivetrain Options:@forelse($model->drivetrainOptions as $drivetrain) {{" $drivetrain->drivetrain"}}@empty " No Drivetrain Options Available" @endforelse</span>
+    <div class="row mt-3">
+        <div class="col-12 col-md-6">
+            <span class="fs-4 fw-bold">Available Exterior Colors</span>
+            <table class="table table-responsive">
                 <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>
-                        <div class="btn-group">
-                            <!-- This goes to the user profile -->
-                            <a href="#" class="btn btn-primary"><span data-feather="edit-2"></span></a>
-                            <form action="{{ route('permission.unassign', [request()->segment(2), $user->id]) }}" method="POST" class="btn-group">
-                                @csrf
-                                <button type="submit" class="btn btn-danger"><span data-feather="slash"></span></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-            @empty
-                <p>No users assigned to this permission</p>
-            @endforelse
-        </table>
 
-        <div class="mt-3 d-flex justify-content-center">
-            {{ $users->links() }}
+                    <th>Exterior Color</th>
+                    <th>Hex Code</th>
+                    <th>Swatch</th>
+                </tr>
+                @forelse($model->exteriorColors as $color)
+                    <tr>
+                        <td>{{$color->name}}</td>
+                        <td>#{{$color->hex_code}}</td>
+                        <td><div style="width: 50px;height: 50px;background-color: #{{$color->hex_code}};"></div></td>
+                    </tr>
+                @empty
+                    <p>No Exterior Colors Associated With This Year Model</p>
+                @endforelse
+            </table>
+        </div>
+        <div class="col-12 col-md-6">
+            <span class="fs-4 fw-bold">Available Interior Colors</span>
+            <table class="table table-responsive">
+                <tr>
+                    <th>Interior Color</th>
+                    <th>Hex Code</th>
+                    <th>Swatch</th>
+                </tr>
+                @forelse($model->interiorColors as $color)
+                    <tr>
+                        <td>{{$color->name}}</td>
+                        <td>#{{$color->hex_code}}</td>
+                        <td><div style="width: 50px;height: 50px;background-color: #{{$color->hex_code}};"></div></td>
+                    </tr>
+                @empty
+                    <p>No Interior Colors Associated With This Year Model</p>
+                @endforelse
+            </table>
         </div>
     </div>
 </x-card>

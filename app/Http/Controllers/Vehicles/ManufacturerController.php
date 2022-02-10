@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeManufacturerRequest;
+use App\Http\Requests\manufacturerRequest;
 use App\Models\ExteriorColor;
 use App\Models\InteriorColor;
 use App\Models\Manufacturer;
@@ -40,19 +40,14 @@ class ManufacturerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param storeManufacturerRequest $request
+     * @param manufacturerRequest $request
+     *
      * @return RedirectResponse
      */
-    public function store(storeManufacturerRequest $request)
+    public function store(manufacturerRequest $request)
     {
-        try {
-            Manufacturer::create($request->validated());
-        } catch (QueryException $e) {
-            if ($e->errorInfo[1] === 1062) {
-                return redirect('/manufacturers')->with('error', 'Manufacturer Already Exist');
-            }
-            throw $e;
-        }
+
+        Manufacturer::create($request->validated());
         return redirect('/manufacturers')->with('success', 'Manufacturer Created');
     }
 
@@ -91,7 +86,7 @@ class ManufacturerController extends Controller
      * @param int $id
      * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(storeManufacturerRequest $request, $id)
+    public function update(manufacturerRequest $request, $id)
     {
         try {
             Manufacturer::findOrFail($id)->update($request->validated());

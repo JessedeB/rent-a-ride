@@ -5,7 +5,7 @@
     @include('layouts.partials.message')
 
     <x-card>
-        <form action="{{ route('permissions.store') }}" method="POST">
+        <form action="{{ route('models.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -13,11 +13,11 @@
                 <select id="make" name="manufacturer_id" class="form-select">
                     @forelse($manufacturers as $manufacturer)
                         @if($loop->first)
-                            <option id="make-default">Select a make</option>
+                            <option id="make-default" value="null">Select a make</option>
                         @endif
                         <option value="{{$manufacturer->id}}">{{$manufacturer->make}}</option>
                     @empty
-                        <option>No Makes available. Add a make first.</option>
+                        <option value="null">No Makes available. Add a make first.</option>
                     @endforelse
                 </select>
                 @error('manufacturer_id')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class storeManufacturerRequest extends \Illuminate\Foundation\Http\FormRequest
+class YearModelRequest extends \Illuminate\Foundation\Http\FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,11 @@ class storeManufacturerRequest extends \Illuminate\Foundation\Http\FormRequest
     public function rules()
     {
         return [
-            'make' => 'required'
+            'manufacturer_id' => 'required|exists:App\Models\Manufacturer,id',
+            'year' => 'required',
+            'model' => 'required',
+            'rental_class_id' => 'required|exists:App\Models\RentalClass,id'
         ];
     }
+
 }
