@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vehicles;
 
+use App\Models\YearModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,9 @@ class YearModelController extends Controller
      */
     public function index()
     {
+        $yearModels = YearModel::with('manufacturer' ,'rentalClass')->paginate(20);
 
+        return view('dashboard.car_list.models.index',compact('yearModels'));
     }
 
     /**
