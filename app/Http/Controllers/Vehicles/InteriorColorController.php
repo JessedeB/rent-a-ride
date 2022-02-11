@@ -18,7 +18,7 @@ class InteriorColorController extends Controller
     {
         $colors = InteriorColor::with('manufacturer')->paginate(20);
         $type = 'interior';
-        return view('dashboard.car_list.colors.index', compact('colors','type'));
+        return view('dashboard.vehicles.colors.index', compact('colors','type'));
     }
 
     /**

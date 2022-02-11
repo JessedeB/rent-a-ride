@@ -23,7 +23,7 @@ class YearModelController extends Controller
     {
         $yearModels = YearModel::with('manufacturer', 'rentalClass')->paginate(20);
 
-        return view('dashboard.car_list.models.index', compact('yearModels'));
+        return view('dashboard.vehicles.models.index', compact('yearModels'));
     }
 
     /**
@@ -36,7 +36,7 @@ class YearModelController extends Controller
         $manufacturers = Manufacturer::all();
         $rentalClasses = RentalClass::all();
 
-        return view('dashboard.car_list.models.create', compact('manufacturers', 'rentalClasses'));
+        return view('dashboard.vehicles.models.create', compact('manufacturers', 'rentalClasses'));
     }
 
     /**
@@ -63,7 +63,7 @@ class YearModelController extends Controller
     {
         $model = YearModel::with('manufacturer', 'exteriorColors', 'interiorColors', 'rentalClass', 'drivetrainOptions')->findOrFail($id);
         $imgSrc = '/images/vehicles/' . Str::slug($model->manufacturer->make) . '/' . Str::slug($model->model) . '/' . Str::slug($model->year) . '.webp';
-        return view('dashboard.car_list.models.show', compact('model', 'imgSrc'));
+        return view('dashboard.vehicles.models.show', compact('model', 'imgSrc'));
     }
 
 
@@ -79,7 +79,7 @@ class YearModelController extends Controller
         $model = YearModel::findOrFail($id);
         $manufacturers = Manufacturer::all();
         $rentalClasses = RentalClass::all();
-        return view('dashboard.car_list.models.edit', compact('model', 'manufacturers', 'rentalClasses'));
+        return view('dashboard.vehicles.models.edit', compact('model', 'manufacturers', 'rentalClasses'));
     }
 
     /**

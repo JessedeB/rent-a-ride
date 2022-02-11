@@ -18,7 +18,7 @@ class ExteriorColorController extends Controller
     {
         $colors = ExteriorColor::with('manufacturer')->paginate(20);
         $type = 'exterior';
-        return view('dashboard.car_list.colors.index', compact('colors','type'));
+        return view('dashboard.vehicles.colors.index', compact('colors','type'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ExteriorColorController extends Controller
     public function create()
     {
         $manufacturers = Manufacturer::all();
-        return view('dashboard.car_list.colors.create',compact('manufacturers'));
+        return view('dashboard.vehicles.colors.create',compact('manufacturers'));
     }
 
     /**

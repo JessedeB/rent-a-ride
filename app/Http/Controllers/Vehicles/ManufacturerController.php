@@ -24,7 +24,7 @@ class ManufacturerController extends Controller
 
         $manufacturers = Manufacturer::paginate(20);
 
-        return view('dashboard.car_list.manufacturers.index', compact('manufacturers'));
+        return view('dashboard.vehicles.manufacturers.index', compact('manufacturers'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-        return view('dashboard.car_list.manufacturers.create');
+        return view('dashboard.vehicles.manufacturers.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class ManufacturerController extends Controller
                            ->paginate(5, pageName: 'model-pager');
         $exteriorColors = ExteriorColor::query()->where('manufacturer_id', $id)->paginate(5, pageName: 'ext-color-pager');
         $interiorColors = InteriorColor::query()->where('manufacturer_id', $id)->paginate(5, pageName: 'int-color-pager');
-        return view('dashboard.car_list.manufacturers.show', compact('models', 'interiorColors', 'exteriorColors'));
+        return view('dashboard.vehicles.manufacturers.show', compact('models', 'interiorColors', 'exteriorColors'));
     }
 
 
@@ -78,7 +78,7 @@ class ManufacturerController extends Controller
     public function edit($id)
     {
         $manufacturer = Manufacturer::findOrFail($id);
-        return \view('dashboard.car_list.manufacturers.edit', compact('manufacturer'));
+        return \view('dashboard.vehicles.manufacturers.edit', compact('manufacturer'));
     }
 
     /**
