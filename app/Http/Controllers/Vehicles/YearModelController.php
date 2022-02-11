@@ -74,7 +74,8 @@ class YearModelController extends Controller
      */
     public function edit($id)
     {
-
+        $model = YearModel::findOrFail($id);
+        return view('dashboard.car_list.models.edit');
     }
 
     /**
@@ -86,6 +87,7 @@ class YearModelController extends Controller
      */
     public function update(YearModelRequest $request, $id)
     {
+
 
     }
 
