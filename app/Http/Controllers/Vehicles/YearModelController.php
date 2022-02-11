@@ -61,7 +61,7 @@ class YearModelController extends Controller
     public function show(int $id): View
     {
         $model = YearModel::with('manufacturer','exteriorColors','interiorColors','rentalClass','drivetrainOptions')->findOrFail($id);
-        $imgSrc = Str::slug("/images/vehicles/{$model->manufacturer->make}/$model->model/$model->year.webp");
+        $imgSrc = '/images/vehicles/'. Str::slug($model->manufacturer->make). '/' . Str::slug($model->model) .'/' . Str::slug($model->year) . '.webp';
         return view('dashboard.car_list.models.show', compact('model','imgSrc'));
     }
 
@@ -75,7 +75,9 @@ class YearModelController extends Controller
     public function edit($id)
     {
         $model = YearModel::findOrFail($id);
-        return view('dashboard.car_list.models.edit');
+        $manufacturers = Manufacturer::all();
+        $rentalClasses = RentalClass::all();
+        return view('dashboard.car_list.models.edit',compact('model','manufacturers','rentalClasses'));
     }
 
     /**
@@ -87,7 +89,7 @@ class YearModelController extends Controller
      */
     public function update(YearModelRequest $request, $id)
     {
-
+        Model::findOrFail($id)->update($request->validated());
 
     }
 
@@ -99,6 +101,15 @@ class YearModelController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            YearModel::findOrFail($id)->delete();
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] == 1451) {
+                return redirect('/models')->with('error', 'Model still has Vehicles, Exterior Colors or Interior Colors associated with it. You must delete those Items before you can delete the model');
+            }
+            throw $e;
+        }
 
+        return redirect('/manufacturers')->with('success', 'Model Deleted');
     }
 }

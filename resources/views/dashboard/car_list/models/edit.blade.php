@@ -2,20 +2,16 @@
 
 @section('content')
     <x-card>
-        <form action="{{ route('models.update') }}" method="POST">
+        <form action="{{ route('models.update',$model->id) }}" method="POST">
             @csrf
 
             <div class="mb-3">
                 <label for="make">Make</label>
                 <select id="make" name="manufacturer_id" class="form-select">
-                    @forelse($manufacturers as $manufacturer)
-                        @if($loop->first)
-                            <option id="make-default" value="null">Select a make</option>
-                        @endif
-                        <option value="{{$manufacturer->id}}">{{$manufacturer->make}}</option>
-                    @empty
-                        <option value="null">No Makes available. Add a make first.</option>
-                    @endforelse
+                    @foreach($manufacturers as $manufacturer)
+                        <option value="{{$manufacturer->id}}"
+                                @if($model->manufacturer->id === $manufacturer->id) selected @endif>{{$manufacturer->make}}</option>
+                    @endforeach
                 </select>
                 @error('manufacturer_id')
                 <p class="text-danger">{{$message}}</p>
@@ -24,7 +20,7 @@
 
             <div class="mb-3">
                 <label for="year">Year</label>
-                <input type="text" name="year" id="year" class="form-control" placeholder="Year">
+                <input type="text" name="year" id="year" class="form-control" placeholder="Year" value="{{$model->year}}">
 
                 @error('year')
                 <p class="text-danger">{{$message}}</p>
@@ -32,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="model">Year</label>
-                <input type="text" name="model" id="model" class="form-control" placeholder="Model">
+                <input type="text" name="model" id="model" class="form-control" placeholder="Model" value="{{$model->model}}">
 
                 @error('model')
                 <p class="text-danger">{{$message}}</p>
@@ -42,21 +38,16 @@
             <div class="mb-3">
                 <label for="rental-class">Rental Class</label>
                 <select id="rental-class" name="rental_class_id" class="form-select">
-                    @forelse($rentalClasses as $rentalClass)
-                        @if($loop->first)
-                            <option id="make-default">Select a Rental Class</option>
-                        @endif
-                        <option value="{{$rentalClass->id}}">{{$rentalClass->name}}</option>
-                    @empty
-                        <option>No Rental Classes available. Add a Rental Class first.</option>
-                    @endforelse
+                    @foreach($rentalClasses as $rentalClass)
+                        <option value="{{$rentalClass->id}}" @if($model->rentalClass->id === $rentalClass->id) selected @endif>{{$rentalClass->name}}</option>
+                    @endforeach
                 </select>
                 @error('rental_class_id')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </x-card>
 @endsection
