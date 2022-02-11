@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Vehicles;
 
+
+use App\Models\InteriorColor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,9 @@ class InteriorColorController extends Controller
      */
     public function index()
     {
-
+        $colors = InteriorColor::with('manufacturer')->paginate(20);
+        $type = 'interior';
+        return view('dashboard.car_list.colors.index', compact('colors','type'));
     }
 
     /**

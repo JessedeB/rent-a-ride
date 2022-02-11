@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vehicles;
 
+use App\Models\ExteriorColor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,9 @@ class ExteriorColorController extends Controller
      */
     public function index()
     {
-
+        $colors = ExteriorColor::with('manufacturer')->paginate(20);
+        $type = 'exterior';
+        return view('dashboard.car_list.colors.index', compact('colors','type'));
     }
 
     /**
