@@ -5,7 +5,7 @@ namespace Database\Seeders\VehicleSeeders;
 /**
  * This is just to show how to use ManufacturerSeeder, do not use or extend this class
  */
-final class BlankSeeder extends \Illuminate\Database\Seeder
+class BlankSeeder extends \Illuminate\Database\Seeder
 {
     use ManufacturerSeeder;
 

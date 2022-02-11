@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\VehicleSeeders;
 
-final class ChevySeeder extends \Illuminate\Database\Seeder
+class ChevySeeder extends \Illuminate\Database\Seeder
 {
     use ManufacturerSeeder;
 
