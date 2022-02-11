@@ -50,7 +50,7 @@
                             <td>{{$color->name}}</td>
                             <td>#{{$color->hex_code}}</td>
                             <td>
-                                <div style="width: 50px;height: 50px;background-color: #{{$color->hex_code}};"></div>
+                                <div class="color-swatch" style="background-color: #{{$color->hex_code}};"></div>
                             </td>
                         </tr>
                     @empty
