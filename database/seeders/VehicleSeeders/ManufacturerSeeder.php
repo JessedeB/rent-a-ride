@@ -15,9 +15,15 @@ trait ManufacturerSeeder {
 
     private int $manufacturerID;
 
+    abstract protected function make(): string;
+    abstract protected function models(): array;
+    abstract protected function exteriorColors(): array;
+    abstract protected function interiorColors(): array;
+    abstract protected function modelOptions(): array;
+
     public final function run()
     {
-        $this->manufacturerID = Manufacturer::create(['make' => $this->make])->id;
+        $this->manufacturerID = Manufacturer::create(['make' => $this->make()])->id;
         $this->createYearModels();
         $this->createExteriorColors();
         $this->createInteriorColors();
@@ -27,7 +33,7 @@ trait ManufacturerSeeder {
     private function createYearModels(): void
     {
         $rentalClasses = RentalClass::all();
-        foreach ($this->models as $model) {
+        foreach ($this->models() as $model) {
             YearModel::create([
                 'manufacturer_id' => $this->manufacturerID,
                 'rental_class_id' => $rentalClasses->firstWhere('name', $model['class'])->id,
@@ -39,7 +45,7 @@ trait ManufacturerSeeder {
 
     private function createExteriorColors(): void
     {
-        foreach ($this->exteriorColors as $color) {
+        foreach ($this->exteriorColors() as $color) {
             $color['manufacturer_id'] = $this->manufacturerID;
             ExteriorColor::create($color);
         }
@@ -47,7 +53,7 @@ trait ManufacturerSeeder {
 
     private function createInteriorColors(): void
     {
-        foreach ($this->interiorColors as $color) {
+        foreach ($this->interiorColors() as $color) {
             $color['manufacturer_id'] = $this->manufacturerID;
             InteriorColor::create($color);
         }
@@ -59,7 +65,7 @@ trait ManufacturerSeeder {
         $models = YearModel::query()->where('manufacturer_id', $this->manufacturerID)->get();
         $exteriorColors = ExteriorColor::query()->where('manufacturer_id', $this->manufacturerID)->get();
         $interiorColors = InteriorColor::query()->where('manufacturer_id', $this->manufacturerID)->get();
-        foreach ($this->modelOptions as $model) {
+        foreach ($this->modelOptions() as $model) {
             $modelID = $models->firstWhere('model', $model['model'])->id;
             foreach ($model['exteriorColors'] as $color) {
                 YearModelExteriorColor::create([
