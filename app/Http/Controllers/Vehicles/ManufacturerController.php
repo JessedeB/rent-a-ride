@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\manufacturerRequest;
+use App\Http\Requests\ManufacturerRequest;
 use App\Models\ExteriorColor;
 use App\Models\InteriorColor;
 use App\Models\Manufacturer;
@@ -40,11 +40,11 @@ class ManufacturerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param manufacturerRequest $request
+     * @param ManufacturerRequest $request
      *
      * @return RedirectResponse
      */
-    public function store(manufacturerRequest $request)
+    public function store(ManufacturerRequest $request)
     {
 
         Manufacturer::create($request->validated());
@@ -55,12 +55,13 @@ class ManufacturerController extends Controller
      * Display the specified resource.
      *
      * @param int $id
+     *
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
     public function show(int $id)
     {
         $models = YearModel::with('rentalClass', 'manufacturer')->where('manufacturer_id', $id)
-            ->paginate(5, pageName: 'model-pager');
+                           ->paginate(5, pageName: 'model-pager');
         $exteriorColors = ExteriorColor::query()->where('manufacturer_id', $id)->paginate(5, pageName: 'ext-color-pager');
         $interiorColors = InteriorColor::query()->where('manufacturer_id', $id)->paginate(5, pageName: 'int-color-pager');
         return view('dashboard.car_list.manufacturers.show', compact('models', 'interiorColors', 'exteriorColors'));
@@ -71,6 +72,7 @@ class ManufacturerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
+     *
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
     public function edit($id)
@@ -83,20 +85,13 @@ class ManufacturerController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param int                      $id
+     *
      * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(manufacturerRequest $request, $id)
+    public function update(ManufacturerRequest $request, $id)
     {
-        try {
-            Manufacturer::findOrFail($id)->update($request->validated());
-        }catch (QueryException $e) {
-            if ($e->errorInfo[1] === 1062) {
-                return redirect('/manufacturers')->with('error', 'Manufacturer Already Exist With That Make');
-            }
-            throw $e;
-        }
-
+        Manufacturer::findOrFail($id)->update($request->validated());
         return redirect('/manufacturers')->with('success', 'Manufacturer Updated');
     }
 
@@ -104,6 +99,7 @@ class ManufacturerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
+     *
      * @return RedirectResponse
      */
     public function destroy($id)

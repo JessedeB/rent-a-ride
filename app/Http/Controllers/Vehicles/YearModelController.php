@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class YearModelController extends Controller
@@ -60,7 +61,7 @@ class YearModelController extends Controller
     public function show(int $id): View
     {
         $model = YearModel::with('manufacturer','exteriorColors','interiorColors','rentalClass','drivetrainOptions')->findOrFail($id);
-        $imgSrc = preg_replace('/\s/','-',strtolower("/images/vehicles/{$model->manufacturer->make}/$model->model/$model->year.webp"));
+        $imgSrc = Str::slug("/images/vehicles/{$model->manufacturer->make}/$model->model/$model->year.webp");
         return view('dashboard.car_list.models.show', compact('model','imgSrc'));
     }
 

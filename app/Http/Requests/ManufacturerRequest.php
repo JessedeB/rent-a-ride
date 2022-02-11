@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class manufacturerRequest extends \Illuminate\Foundation\Http\FormRequest
+class ManufacturerRequest extends \Illuminate\Foundation\Http\FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
