@@ -57,7 +57,7 @@ class YearModelController extends Controller
      *
      * @param int $id
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
     public function show(int $id): View
     {
