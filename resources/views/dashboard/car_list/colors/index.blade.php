@@ -9,7 +9,7 @@
     <div class="table-responsive">
         <table class="table">
             <tr>
-                <td>Manufacturer</td>
+                <th>Manufacturer</th>
                 <th>Name</th>
                 <th>Hex Code</th>
                 <th>Swatch</th>

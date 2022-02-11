@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Vehicles;
 
 use App\Models\ExteriorColor;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,7 +28,8 @@ class ExteriorColorController extends Controller
      */
     public function create()
     {
-
+        $manufacturers = Manufacturer::all();
+        return view('dashboard.car_list.colors.create',compact('manufacturers'));
     }
 
     /**
