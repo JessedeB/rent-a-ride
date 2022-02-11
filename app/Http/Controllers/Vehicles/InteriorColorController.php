@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Vehicles;
 
 use App\Models\InteriorColor;
+use Illuminate\Database\Eloquent\Model;
+
 
 class InteriorColorController extends ColorController
 {
-    public function __construct()
-    {
-        $this->type = ColorType::Exterior;
-        $this->model = InteriorColor::class;
-    }
+        function getType():ColorType{
+            return ColorType::Interior;
+        }
+
+        function getModel():string{
+            return InteriorColor::class;
+        }
 }

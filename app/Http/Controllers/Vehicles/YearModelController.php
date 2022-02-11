@@ -92,8 +92,8 @@ class YearModelController extends Controller
      */
     public function update(YearModelRequest $request, $id)
     {
-        Model::findOrFail($id)->update($request->validated());
-
+        YearModel::findOrFail($id)->update($request->validated());
+        return redirect('/models')->with('success', 'Model Updated');
     }
 
     /**
@@ -114,6 +114,6 @@ class YearModelController extends Controller
             throw $e;
         }
 
-        return redirect('/manufacturers')->with('success', 'Model Deleted');
+        return redirect('/models')->with('success', 'Model Deleted');
     }
 }

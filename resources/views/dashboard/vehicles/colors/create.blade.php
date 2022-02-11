@@ -36,7 +36,7 @@
 
         <div class="mb-3">
             <label for="hex_code">Hex Code</label>
-            <input type="text" hex_code="hex_code" id="hex_code" class="form-control" placeholder="Hex Code">
+            <input type="text" name="hex_code" id="hex_code" class="form-control" placeholder="Hex Code">
 
             @error('hex_code')
             <p class="text-danger">{{$message}}</p>
