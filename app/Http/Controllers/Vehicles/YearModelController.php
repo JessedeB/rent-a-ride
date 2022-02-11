@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Vehicles;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\YearModelRequest;
 use App\Models\Manufacturer;
 use App\Models\RentalClass;
 use App\Models\YearModel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -22,9 +21,9 @@ class YearModelController extends Controller
      */
     public function index(): View
     {
-        $yearModels = YearModel::with('manufacturer' ,'rentalClass')->paginate(20);
+        $yearModels = YearModel::with('manufacturer', 'rentalClass')->paginate(20);
 
-        return view('dashboard.car_list.models.index',compact('yearModels'));
+        return view('dashboard.car_list.models.index', compact('yearModels'));
     }
 
     /**
@@ -37,13 +36,14 @@ class YearModelController extends Controller
         $manufacturers = Manufacturer::all();
         $rentalClasses = RentalClass::all();
 
-        return view('dashboard.car_list.models.create', compact('manufacturers','rentalClasses'));
+        return view('dashboard.car_list.models.create', compact('manufacturers', 'rentalClasses'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param YearModelRequest $request
+     *
      * @return RedirectResponse
      */
     public function store(YearModelRequest $request): RedirectResponse
@@ -55,21 +55,23 @@ class YearModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
     public function show(int $id): View
     {
-        $model = YearModel::with('manufacturer','exteriorColors','interiorColors','rentalClass','drivetrainOptions')->findOrFail($id);
-        $imgSrc = '/images/vehicles/'. Str::slug($model->manufacturer->make). '/' . Str::slug($model->model) .'/' . Str::slug($model->year) . '.webp';
-        return view('dashboard.car_list.models.show', compact('model','imgSrc'));
+        $model = YearModel::with('manufacturer', 'exteriorColors', 'interiorColors', 'rentalClass', 'drivetrainOptions')->findOrFail($id);
+        $imgSrc = '/images/vehicles/' . Str::slug($model->manufacturer->make) . '/' . Str::slug($model->model) . '/' . Str::slug($model->year) . '.webp';
+        return view('dashboard.car_list.models.show', compact('model', 'imgSrc'));
     }
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Application|Factory|View|\Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,14 +79,15 @@ class YearModelController extends Controller
         $model = YearModel::findOrFail($id);
         $manufacturers = Manufacturer::all();
         $rentalClasses = RentalClass::all();
-        return view('dashboard.car_list.models.edit',compact('model','manufacturers','rentalClasses'));
+        return view('dashboard.car_list.models.edit', compact('model', 'manufacturers', 'rentalClasses'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(YearModelRequest $request, $id)
@@ -96,7 +99,8 @@ class YearModelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return RedirectResponse
      */
     public function destroy($id)
