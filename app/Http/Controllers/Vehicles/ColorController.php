@@ -8,19 +8,19 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ *  Provides the functionality for the Interior and Exterior Color Controllers
+ *  Classes that extend this class must set $type
+ */
 abstract class ColorController extends \App\Http\Controllers\Controller
 {
-    private ColorType $type;
+    protected ColorType $type;
     private string $model;
 
-    abstract protected function getModel(): string;
-
-    abstract protected function getType(): ColorType;
 
     public function __construct()
     {
-        $this->type = $this->getType();
-        $this->model = $this->getModel();
+        $this->model = $this->type->getModel();
     }
 
     /**

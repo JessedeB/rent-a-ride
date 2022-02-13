@@ -7,11 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExteriorColorController extends ColorController
 {
-    function getType():ColorType{
-        return ColorType::Exterior;
-    }
-
-    function getModel():string{
-        return ExteriorColor::class;
-    }
+    protected ColorType $type = ColorType::Exterior;
 }

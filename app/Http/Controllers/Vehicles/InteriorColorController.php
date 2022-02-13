@@ -8,11 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class InteriorColorController extends ColorController
 {
-        function getType():ColorType{
-            return ColorType::Interior;
-        }
-
-        function getModel():string{
-            return InteriorColor::class;
-        }
+    protected ColorType $type = ColorType::Interior;
 }
