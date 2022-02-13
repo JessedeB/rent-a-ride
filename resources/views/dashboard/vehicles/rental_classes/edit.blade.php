@@ -2,7 +2,7 @@
 
 @section('content')
     <x-card>
-        <form action="{{ route('models.update',$model->id) }}" method="POST">
+        <form action="{{ route('rental-classes.update',$rentalClass->id) }}" method="POST">
             @csrf
 
 

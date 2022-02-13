@@ -5,7 +5,7 @@
     @include('layouts.partials.message')
 
     <x-card>
-        <form action="{{ route('models.store') }}" method="POST">
+        <form action="{{ route('rental-classes.store') }}" method="POST">
             @csrf
 
 
