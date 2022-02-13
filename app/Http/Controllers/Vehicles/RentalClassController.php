@@ -29,7 +29,7 @@ class RentalClassController extends Controller
 
     public function show(int $id): View
     {
-        $rentalClass = RentalClass::findOrFail($id);
+        $rentalClass = RentalClass::with('yearModels')->findOrFail($id);
         return view('dashboard.vehicles.rental_classes.show',compact('rentalClass'));
     }
 
