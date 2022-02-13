@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ManufacturerRequest;
-use App\Models\ExteriorColor;
-use App\Models\InteriorColor;
-use App\Models\Manufacturer;
-use App\Models\YearModel;
+use App\Models\Vehicles\ExteriorColor;
+use App\Models\Vehicles\InteriorColor;
+use App\Models\Vehicles\Manufacturer;
+use App\Models\Vehicles\YearModel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -17,7 +17,7 @@ class ManufacturerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Factory|Application|View
+     * @return View
      */
     public function index(): View
     {
@@ -30,9 +30,9 @@ class ManufacturerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('dashboard.vehicles.manufacturers.create');
     }
@@ -44,7 +44,7 @@ class ManufacturerController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(ManufacturerRequest $request)
+    public function store(ManufacturerRequest $request): RedirectResponse
     {
 
         Manufacturer::create($request->validated());
@@ -56,9 +56,9 @@ class ManufacturerController extends Controller
      *
      * @param int $id
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
-    public function show(int $id)
+    public function show(int $id): View
     {
         $models = YearModel::with('rentalClass', 'manufacturer')->where('manufacturer_id', $id)
                            ->paginate(5, pageName: 'model-pager');
@@ -73,9 +73,9 @@ class ManufacturerController extends Controller
      *
      * @param int $id
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         $manufacturer = Manufacturer::findOrFail($id);
         return \view('dashboard.vehicles.manufacturers.edit', compact('manufacturer'));
@@ -87,9 +87,9 @@ class ManufacturerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int                      $id
      *
-     * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return RedirectResponse
      */
-    public function update(ManufacturerRequest $request, $id)
+    public function update(ManufacturerRequest $request, $id): RedirectResponse
     {
         Manufacturer::findOrFail($id)->update($request->validated());
         return redirect('/manufacturers')->with('success', 'Manufacturer Updated');
@@ -102,7 +102,7 @@ class ManufacturerController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         try {
             Manufacturer::findOrFail($id)->delete();

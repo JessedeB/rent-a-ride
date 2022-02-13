@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Rentals\Rental;
+use App\Models\Vehicles\Vehicle;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

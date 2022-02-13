@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Vehicles;
 
+use App\Models\Location;
+use App\Models\Rentals\Rental;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

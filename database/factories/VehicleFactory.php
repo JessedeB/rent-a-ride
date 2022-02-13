@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Vehicle;
-use App\Models\YearModel;
+use App\Models\Vehicles\Vehicle;
+use App\Models\Vehicles\YearModel;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

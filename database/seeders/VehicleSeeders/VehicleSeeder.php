@@ -2,8 +2,7 @@
 
 namespace Database\Seeders\VehicleSeeders;
 
-use App\Models\Vehicle;
-use Database\Seeders\VehicleSeeders\ChevySeeder;
+use App\Models\Vehicles\Vehicle;
 use Illuminate\Database\Seeder;
 
 class VehicleSeeder extends Seeder

@@ -2,14 +2,14 @@
 
 namespace Database\Seeders\VehicleSeeders;
 
-use App\Models\DrivetrainOption;
-use App\Models\ExteriorColor;
-use App\Models\InteriorColor;
-use App\Models\Manufacturer;
-use App\Models\RentalClass;
-use App\Models\YearModel;
-use App\Models\YearModelExteriorColor;
-use App\Models\YearModelInteriorColor;
+use App\Models\Vehicles\DrivetrainOption;
+use App\Models\Vehicles\ExteriorColor;
+use App\Models\Vehicles\InteriorColor;
+use App\Models\Vehicles\Manufacturer;
+use App\Models\Vehicles\RentalClass;
+use App\Models\Vehicles\YearModel;
+use App\Models\Vehicles\YearModelExteriorColor;
+use App\Models\Vehicles\YearModelInteriorColor;
 
 trait ManufacturerSeeder {
 

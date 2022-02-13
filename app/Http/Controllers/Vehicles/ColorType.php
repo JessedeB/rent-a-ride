@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Vehicles;
 
-use App\Models\ExteriorColor;
-use App\Models\InteriorColor;
+use App\Models\Vehicles\ExteriorColor;
+use App\Models\Vehicles\InteriorColor;
 
 enum ColorType : string {
     case Exterior = 'exterior';

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Vehicles;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class ExteriorColor extends Model
+class InteriorColor extends Model
 {
     use HasFactory;
 
@@ -27,7 +27,7 @@ class ExteriorColor extends Model
      */
     public function yearModels(): BelongsToMany
     {
-        return $this->belongsToMany(YearModel::class, 'year_model_exterior_colors');
+        return $this->belongsToMany(YearModel::class, 'year_model_interior_colors');
     }
 
     /**

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\YearModelRequest;
-use App\Models\Manufacturer;
-use App\Models\RentalClass;
-use App\Models\YearModel;
+use App\Models\Vehicles\Manufacturer;
+use App\Models\Vehicles\RentalClass;
+use App\Models\Vehicles\YearModel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -17,7 +17,7 @@ class YearModelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Factory|Application|View
+     * @return View
      */
     public function index(): View
     {
@@ -29,7 +29,7 @@ class YearModelController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
     public function create(): View
     {
@@ -72,9 +72,9 @@ class YearModelController extends Controller
      *
      * @param int $id
      *
-     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @return View
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         $model = YearModel::findOrFail($id);
         $manufacturers = Manufacturer::all();
@@ -88,9 +88,9 @@ class YearModelController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int                      $id
      *
-     * @return Application|RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return RedirectResponse
      */
-    public function update(YearModelRequest $request, $id)
+    public function update(YearModelRequest $request,int $id): RedirectResponse
     {
         YearModel::findOrFail($id)->update($request->validated());
         return redirect('/models')->with('success', 'Model Updated');
@@ -103,7 +103,7 @@ class YearModelController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         try {
             YearModel::findOrFail($id)->delete();

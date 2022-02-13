@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RentalClassRequest;
-use App\Models\RentalClass;
+use App\Models\Vehicles\RentalClass;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

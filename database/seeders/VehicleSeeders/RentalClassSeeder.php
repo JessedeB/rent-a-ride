@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\VehicleSeeders;
 
-use App\Models\RentalClass;
+use App\Models\Vehicles\RentalClass;
 use Illuminate\Database\Seeder;
 
 class RentalClassSeeder extends Seeder

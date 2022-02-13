@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Vehicles;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class YearModelInteriorColor extends Model
+class YearModelExteriorColor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year_model_id', 'interior_color_id'];
+    protected $fillable = ['year_model_id', 'exterior_color_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -23,8 +23,8 @@ class YearModelInteriorColor extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function interiorColor(): BelongsTo
+    public function exteriorColor(): BelongsTo
     {
-        return $this->belongsTo(InteriorColor::class);
+        return $this->belongsTo(ExteriorColor::class);
     }
 }

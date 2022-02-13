@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vehicles;
 
 use App\Http\Requests\ColorRequest;
-use App\Models\Manufacturer;
+use App\Models\Vehicles\Manufacturer;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -98,7 +98,7 @@ abstract class ColorController extends \App\Http\Controllers\Controller
      *
      * @return RedirectResponse
      */
-    public function update(ColorRequest $request, $id): RedirectResponse
+    public function update(ColorRequest $request,int $id): RedirectResponse
     {
         $this->model::findOrFail($id)->update($request->validated());
         return redirect("/{$this->type->value}-colors")->with('success', "{$this->type->name} Color Updated");
@@ -111,7 +111,7 @@ abstract class ColorController extends \App\Http\Controllers\Controller
      *
      * @return RedirectResponse
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         try {
             $this->model::findOrFail($id)->delete();
