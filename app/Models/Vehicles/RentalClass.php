@@ -4,17 +4,18 @@ namespace App\Models\Vehicles;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RentalClass extends Model
 {
     use HasFactory;
     protected $fillable=['name','description','daily_rate','weekly_rate','monthly_rate'];
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function yearModels(): BelongsToMany
+    public function yearModels(): HasMany
     {
-        return $this->belongsToMany(YearModel::class);
+        return $this->hasMany(YearModel::class);
     }
 }
