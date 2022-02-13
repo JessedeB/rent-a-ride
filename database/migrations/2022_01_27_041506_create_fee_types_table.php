@@ -15,9 +15,9 @@ class CreateFeeTypesTable extends Migration
     {
         Schema::create('fee_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100)->unique();
-            $table->multiLineString('description');
-            $table->enum('type',['Debit','Credit']);
+            $table->string('name', 100)->unique();
+            $table->string('description', 500);
+            $table->enum('type', ['Debit', 'Credit']);
             $table->timestamps();
         });
     }
@@ -29,6 +29,8 @@ class CreateFeeTypesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('fee_types');
+        Schema::enableForeignKeyConstraints();
     }
 }

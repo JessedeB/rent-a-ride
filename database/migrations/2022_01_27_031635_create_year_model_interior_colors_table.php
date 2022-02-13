@@ -17,7 +17,7 @@ class CreateYearModelInteriorColorsTable extends Migration
             $table->id();
             $table->foreignId('year_model_id')->constrained();
             $table->foreignId('interior_color_id')->constrained();
-            $table->unique(['year_model_id','interior_color_id'],'year_model_interior_color_unq');
+            $table->unique(['year_model_id', 'interior_color_id'], 'year_model_interior_color_unq');
             $table->timestamps();
         });
     }
@@ -29,6 +29,8 @@ class CreateYearModelInteriorColorsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('year_model_interior_colors');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -19,8 +19,8 @@ class CreateRentalsTable extends Migration
             $table->foreignId('vehicle_id')->constrained();
             $table->foreignId('pickup_location')->references('id')->on('locations');
             $table->foreignId('return_location')->nullable()->references('id')->on('locations');
-            $table->float('pickup_mileage',7,2,true);
-            $table->float('return_mileage',7,2,true)->nullable();
+            $table->float('pickup_mileage', 7, 2, true);
+            $table->float('return_mileage', 7, 2, true)->nullable();
             $table->dateTime('expected_pickup_time');
             $table->dateTime('actual_pickup_time')->nullable()->default(null);
             $table->dateTime('expected_return_time');
@@ -28,7 +28,7 @@ class CreateRentalsTable extends Migration
             $table->boolean('damage_occurred')->default(false);
             $table->boolean('fees_accrued')->default(false);
             $table->boolean('paid_in_full')->default(false);
-            $table->enum('status',['Reserved','Rented','Returned'])->default('Reserved');
+            $table->enum('status', ['Reserved', 'Rented', 'Returned'])->default('Reserved');
             $table->timestamps();
         });
     }
@@ -40,6 +40,8 @@ class CreateRentalsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('rentals');
+        Schema::enableForeignKeyConstraints();
     }
 }

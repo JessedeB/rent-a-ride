@@ -16,8 +16,8 @@ class CreateDriveTrainOptionsTable extends Migration
         Schema::create('drivetrain_options', function (Blueprint $table) {
             $table->id();
             $table->foreignId('year_model_id')->constrained();
-            $table->enum('drivetrain',['FWD','RWD','AWD','4WD']);
-            $table->unique('year_model_id','drivetrain');
+            $table->enum('drivetrain', ['FWD', 'RWD', 'AWD', '4WD']);
+            $table->unique(['year_model_id', 'drivetrain']);
             $table->timestamps();
         });
     }
@@ -29,6 +29,8 @@ class CreateDriveTrainOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drive_train_options');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('drivetrain_options');
+        Schema::enableForeignKeyConstraints();
     }
 }

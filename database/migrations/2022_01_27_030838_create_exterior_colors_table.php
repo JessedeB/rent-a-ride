@@ -16,9 +16,9 @@ class CreateExteriorColorsTable extends Migration
         Schema::create('exterior_colors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('manufacturer_id')->constrained();
-            $table->string('name',100);
-            $table->string('hex_code',6);
-            $table->unique(['manufacturer_id','name']);
+            $table->string('name', 100);
+            $table->string('hex_code', 6);
+            $table->unique(['manufacturer_id', 'name']);
             $table->timestamps();
         });
     }
@@ -30,6 +30,8 @@ class CreateExteriorColorsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('exterior_colors');
+        Schema::enableForeignKeyConstraints();
     }
 }

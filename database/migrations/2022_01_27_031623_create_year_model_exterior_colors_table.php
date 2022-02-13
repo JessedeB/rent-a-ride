@@ -17,7 +17,7 @@ class CreateYearModelExteriorColorsTable extends Migration
             $table->id();
             $table->foreignId('year_model_id')->constrained();
             $table->foreignId('exterior_color_id')->constrained();
-            $table->unique(['year_model_id','exterior_color_id'],'year_model_exterior_color_unq');
+            $table->unique(['year_model_id', 'exterior_color_id'], 'year_model_exterior_color_unq');
             $table->timestamps();
         });
     }
@@ -29,6 +29,8 @@ class CreateYearModelExteriorColorsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('year_model_exterior_colors');
+        Schema::enableForeignKeyConstraints();
     }
 }

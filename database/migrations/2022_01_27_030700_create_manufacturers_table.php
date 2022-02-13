@@ -13,10 +13,10 @@ class CreateManufacturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('manufacturers',function (Blueprint $table) {
-           $table->id();
-           $table->string('make',100);
-           $table->timestamps();
+        Schema::create('manufacturers', function (Blueprint $table) {
+            $table->id();
+            $table->string('make', 100);
+            $table->timestamps();
         });
     }
 
@@ -25,7 +25,10 @@ class CreateManufacturersTable extends Migration
      *
      * @return void
      */
-    public function down(){
+    public function down()
+    {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('manufacturers');
+        Schema::enableForeignKeyConstraints();
     }
 }
