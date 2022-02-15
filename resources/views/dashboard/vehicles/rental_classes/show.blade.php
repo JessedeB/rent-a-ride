@@ -41,6 +41,7 @@
                             <p>No models associated with this Rental Class</p>
                         @endforelse
                     </table>
+                </div>
             </div>
         </div>
     </x-card>
