@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Vehicles;
 
 use App\Models\Vehicles\Vehicle;
 use App\Models\Vehicles\YearModel;
@@ -15,6 +15,8 @@ class VehicleFactory extends Factory
      *
      * @return array
      */
+
+    protected $model = Vehicle::class;
     public function definition()
     {
 
